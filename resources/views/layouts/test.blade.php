@@ -97,11 +97,11 @@
                             </div>
                         </a>
                         <div class="dropdown-menu w dropdown-menu-scale ">
-                            @if(Auth::id() == user()->id)
-                                <a class="dropdown-item" href="{{ route('profile.edit') }}">
+
+                                <a class="dropdown-item" href="#">
                                     <span>Edit Profile</span>
                                 </a>
-                            @endif
+
 
                             <a class="dropdown-item" href="#">
                                 <span>Settings</span>
