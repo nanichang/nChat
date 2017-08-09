@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile/{slug}', 'ProfileController@index')->name('profile');
-    Route::post('/edit', 'ProfileController@update')->name('profile.update');
+    Route::get('profile/edit/profile', 'ProfileController@edit')->name('profile.edit');
+    Route::post('profile/update/profile', 'ProfileController@update')->name('profile.update');
 });
-Route::get('/edit', 'ProfileController@edit')->name('profile.edit');
+Route::get('/edit', 'ProfileController@edit')->name('profile.dedit');

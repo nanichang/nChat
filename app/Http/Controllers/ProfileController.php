@@ -6,6 +6,7 @@
 	use App\Repositories\Profile\ProfileContract;
 	use Auth;
 	use App\User;
+	use Session;
 
 	class ProfileController extends Controller
 	{
@@ -67,8 +68,7 @@
 	     */
 	    public function edit()
 	    {
-	        return view('profiles.edit')
-			->with(['info' => Auth::user()->profile]);
+	        return view('profiles.edit')->with('user', Auth::user()->profile);
 	    }
 
 	    /**
@@ -78,9 +78,36 @@
 	     * @param  int  $id
 	     * @return \Illuminate\Http\Response
 	     */
-	    public function update(Request $request, $id)
+	    public function update(Request $request)
 	    {
-	        //
+	    	$this->validate($request, [
+	    		'phone' => 'required',
+	    		'facebook_url' => 'required',
+				'twitter_url' => 'required',
+				'google_plus' => 'required',
+				'linkdin_url' => 'required',
+				'about' => 'required|max:255',
+				'address' => 'required',
+	    	]);
+	        
+	        Auth::user()->profile()->update([
+	        	'phone' => $request->phone,
+	        	'facebook_url' => $request->facebook_url,
+	        	'twitter_url' => $request->twitter_url,
+	        	'google_plus' => $request->google_plus,
+	        	'linkdin_url' => $request->linkdin_url,
+	        	'about' => $request->about,
+	        	'address' => $request->address,
+	        ]);
+
+	        if($request->hasFile('avatar')) {
+	        	Auth::user()->update([
+	        		'avatar' => $request->avatar->store('public/avatars')
+	        	]);
+	        }
+
+	        Session::flash('success', 'Profile Updated');
+	        return redirect()->back();
 	    }
 
 	    /**
