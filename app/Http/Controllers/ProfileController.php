@@ -5,6 +5,7 @@
 	use Illuminate\Http\Request;
 	use App\Repositories\Profile\ProfileContract;
 	use Auth;
+	use App\User;
 
 	class ProfileController extends Controller
 	{
@@ -21,7 +22,8 @@
 	     * @return \Illuminate\Http\Response
 	     */
         public function index($slug){
-            $user = $this->repo->profile($slug);
+            // $user = $this->repo->profile($slug);
+            $user = User::where('slug', $slug)->first();
             return view('profiles.profile')->with('user', $user);
         }
 

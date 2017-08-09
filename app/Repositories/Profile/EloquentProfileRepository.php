@@ -7,5 +7,7 @@ use App\User;
 class EloquentProfileRepository implements ProfileContract
 {
     public function profile($slug) {
+    	$user = User::where('slug, $slug')->first();
+    	return $user;
     }
 }

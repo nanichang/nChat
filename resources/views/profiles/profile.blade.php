@@ -20,7 +20,7 @@
                     <div class="col-sm-7">
                         <a href="#" class="pull-left m-r-md">
                             <span class="avatar w-96">
-                                <img src="{{Storage::url($user->avatar)}}">
+                                <img src="{{ Storage::url($user->avatar) }}">
                                 <i class="on b-white"></i>
                             </span>
                         </a>
