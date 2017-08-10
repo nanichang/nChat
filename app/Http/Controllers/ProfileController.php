@@ -106,8 +106,8 @@
 	        	]);
 	        }
 
-	        Session::flash('success', 'Profile Updated');
-	        return redirect()->back();
+	        // Session::flash('success', 'Profile Updated');
+	        return redirect()->back()->with('success', 'Profile Updated');
 	    }
 
 	    /**

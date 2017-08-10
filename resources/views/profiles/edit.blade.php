@@ -174,7 +174,7 @@
 							</form>
 						</div>
 						<p><strong>Delete account?</strong></p>
-						<button type="submit" class="btn btn-danger m-t" data-toggle="modal" data-target="#modal">Delete Account</button>
+						<button type="submit" class="btn btn-danger m-t" data-toggle="modal" data-target="#modal" disabled >Delete Account</button>
 					</div>
 				</div>
 			</div>

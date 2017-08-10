@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="/assets/css/styles/style.css" type="text/css" />
     <!-- endbuild -->
     <link rel="stylesheet" href="/assets/css/styles/font.css" type="text/css" />
+    <link rel="stylesheet" href="/css/noty.css" type="text/css" />
     @yield('stylesheet')
 </head>
 <body>
@@ -322,7 +323,8 @@
 
     <!-- build:js scripts/app.min.js -->
     <!-- jQuery -->
-    <script src="/assets/libs/jquery/dist/jquery.js"></script>
+    <!-- <script src="/assets/libs/jquery/dist/jquery.js"></script> -->
+    <script src="{{ mix('/js/app.js') }}"></script>
     <!-- Bootstrap -->
     <script src="/assets/libs/tether/dist/js/tether.min.js"></script>
     <script src="/assets/libs/bootstrap/dist/js/bootstrap.js"></script>
@@ -348,6 +350,16 @@
     <script src="/assets/scripts/ui-taburl.js"></script>
     <script src="/assets/scripts/app.js"></script>
     <script src="/assets/scripts/ajax.js"></script>
+    <script src="/js/noty.js"></script>
     <!-- endbuild -->
+    <script>
+        @if(Session::has('success'))
+            noty({
+                type: 'success',
+                layout: 'topRight',
+                text: '{{ Session::get('success') }}'
+            });
+        @endif
+    </script>
 </body>
 </html>
